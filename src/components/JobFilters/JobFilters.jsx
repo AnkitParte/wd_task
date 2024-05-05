@@ -3,6 +3,7 @@ import MultipleSelectBox from './MultiSelectBox'
 import { minBase } from './helpers'
 import { getDropdownVal } from '../../tempDb'
 import { COMP_NAME, EXPR, LOCATION, ROLE, SALARY } from '../../redux/actions'
+import SingleSelectBox from './SingleSelectBox'
 
 const JobFilters = () => {
   let { jobRole, jobExp, jobLocation, jobCompany } = getDropdownVal()
@@ -26,7 +27,7 @@ const JobFilters = () => {
           style={{ minWidth: '170px' }}
           reduxAction={ROLE}
         />
-        <MultipleSelectBox
+        <SingleSelectBox
           dropDownList={jobExp.sort((a, b) => a - b)}
           label={'Experience'}
           style={{ minWidth: '70px' }}
@@ -38,7 +39,7 @@ const JobFilters = () => {
           style={{ minWidth: '170px' }}
           reduxAction={LOCATION}
         />
-        <MultipleSelectBox
+        <SingleSelectBox
           dropDownList={minBase}
           label={'Min Base Salary'}
           style={{ minWidth: '170px' }}

@@ -26,10 +26,8 @@ export const filterData = (data, filter) => {
       jobData = jobData.filter((job) => job?.jobRole === str)
     })
   }
-  if (expr?.length !== 0) {
-    expr?.forEach((entry) => {
-      jobData = jobData.filter((job) => entry >= job?.minExp)
-    })
+  if (expr) {
+    jobData = jobData.filter((job) => +expr >= job?.minExp)
   }
   if (location?.length !== 0) {
     location?.forEach((entry) => {
@@ -39,16 +37,17 @@ export const filterData = (data, filter) => {
   }
   if (company?.length !== 0) {
     company?.forEach((entry) => {
-      jobData = jobData.filter((job) => job?.location === entry)
+      jobData = jobData.filter((job) => job?.companyName === entry)
     })
   }
-  if (salary?.length !== 0) {
-    company?.forEach((entry) => {
-      let num = entry.split('L')
-      jobData = jobData.filter((job) => {
-        let salary = job * 83.38
-        if (+num >= salary) return job
-      })
+  if (salary) {
+    let num = salary.split('L')
+    let inLacs = +num?.[0] * 100000
+    console.log('inLacs', inLacs)
+    jobData = jobData.filter((job) => {
+      let salary = job?.maxJdSalary * 83.38 * 1000
+      console.log('salary', salary)
+      if (salary >= inLacs) return job
     })
   }
 

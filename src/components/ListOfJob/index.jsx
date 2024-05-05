@@ -27,13 +27,17 @@ const ListOfJob = ({ setTotalJobCount }) => {
 
   useEffect(() => {
     let onScroll = () => {
-      if (
-        window.innerHeight + window.scrollY >=
-        window.document.body.offsetHeight - 20
-      ) {
-        if (!hasMore) {
-          setPage((p) => p + 1)
-          // console.log('Page Up')
+      if (!loading) {
+        if (
+          window.innerHeight + window.scrollY >=
+          window.document.body.offsetHeight - 50
+        ) {
+          if (!hasMore) {
+            setPage((p) => p + 1)
+            // console.log('Page Up')
+          } else if (jobApiData?.jdList == 0) {
+            setPage(0)
+          }
         }
       }
     }

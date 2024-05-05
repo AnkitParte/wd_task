@@ -29,9 +29,23 @@ const userJobListApi = (props) => {
     }
     setLoading(false)
   }
+  const onFilterChange = () => {
+    let dataAfterFilter = filterData([...jobApiData.jdList], redux)
+    setJobApiData((prev) => {
+      return {
+        ...prev,
+        jdList: dataAfterFilter,
+        totalCount: dataAfterFilter?.length
+      }
+    })
+    setTotalJobCount(dataAfterFilter?.length)
+  }
   useEffect(() => {
     apiCall()
-  }, [pageNum, redux])
+  }, [pageNum])
+  useEffect(() => {
+    onFilterChange()
+  }, [redux])
   return { jobApiData, loading, hasMore }
 }
 
