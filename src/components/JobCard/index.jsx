@@ -3,16 +3,6 @@ import jobCardStyles from './jobCard.module.css'
 import { useState } from 'react'
 import JobInfoModal from './JobInfoModal'
 
-// let descStyle = {
-//   width: '250px',
-//   maxHeight: '120px',
-//   overflow: 'hidden',
-//   textOverflow: 'ellipsis',
-//   lineHeight: '1.2rem',
-//   WebkitLineClamp: 6,
-//   display: '-webkit-box',
-//   WebkitBoxOrient: 'vertical'
-// }
 const JobCard = ({ data }) => {
   const [jdModal, setJdModal] = useState(false)
   const [jdModalData, setJdModalData] = useState({})
@@ -47,12 +37,7 @@ const JobCard = ({ data }) => {
           : 'U/A'}
       </div>
       <div className={jobCardStyles.aboutDiv}>About Company:</div>
-      <div
-        // style={descStyle}
-        className={jobCardStyles.descDiv}
-      >
-        {data?.jobDetailsFromCompany}
-      </div>
+      <div className={jobCardStyles.descDiv}>{data?.jobDetailsFromCompany}</div>
       <div
         className={jobCardStyles.showMoreDiv}
         onClick={() => {
@@ -68,7 +53,6 @@ const JobCard = ({ data }) => {
       </div>
       <div>
         <button
-          // style={{ color: 'white', background: 'black' }}
           className={jobCardStyles.easyApplyBtn}
           variant='contained'
           fullWidth

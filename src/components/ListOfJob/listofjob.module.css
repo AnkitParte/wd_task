@@ -1,0 +1,10 @@
+.listDiv {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  text-align: left;
+  padding: 0 5rem;
+  width: 80%;
+  margin: auto;
+  justify-content: space-around;
+}

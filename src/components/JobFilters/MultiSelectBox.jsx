@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { useTheme } from '@mui/material/styles'
-import { MenuItem, FormControl, Select, Chip, Box } from '@mui/material'
+import { MenuItem, FormControl, Select, Chip, Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
 
 const ITEM_HEIGHT = 48
@@ -32,23 +32,6 @@ export default function MultipleSelectBox({
   const theme = useTheme()
   const [optionValue, setOptionValue] = useState([])
   const dispatch = useDispatch()
-  // const [isHovered, setIsHovered] = useState(false)
-
-  // const handleMouseOver = () => {
-  //   setIsHovered(true)
-  // }
-
-  // const handleMouseOut = () => {
-  //   setIsHovered(false)
-  // }
-  // const btnStyle = {
-  //   backgroundColor: isHovered ? 'coral' : '',
-  //   color: isHovered ? 'white' : 'black',
-  //   padding: '10px',
-  //   border: 'none',
-  //   padding: '4px 6px',
-  //   borderRadius: '4px'
-  // }
 
   const handleChange = (event) => {
     const {
@@ -58,15 +41,11 @@ export default function MultipleSelectBox({
     setOptionValue(value)
     dispatch({ type: reduxAction, payload: value })
   }
-  // const handleDelete = (e, value) => {
-  //   e.preventDefault()
-  //   console.log('event', value)
-  //   let newVal = optionValue?.filter((it) => it != value)
-  //   setOptionValue(newVal)
-  //   dispatch({ type: reduxAction, payload: newVal })
-  // }
+  const handleClearAll = () => {
+    setOptionValue([])
+    dispatch({ type: reduxAction, payload: [] })
+  }
 
-  // console.log('optionValue->', optionValue)
   return (
     <div>
       <FormControl size='small'>
@@ -77,64 +56,71 @@ export default function MultipleSelectBox({
             <span style={{ color: 'white' }}>Text</span>
           )}
         </div>
-        <Select
-          labelId='demo-multiple-chip-label'
-          id='demo-multiple-chip'
-          multiple
-          displayEmpty
-          value={optionValue}
-          onChange={handleChange}
-          renderValue={(selected) => {
-            if (selected.length === 0) {
-              return (
-                <span
-                  style={{ color: 'grey', fontWeight: 400, fontSize: '12px' }}
-                >
-                  {label}
-                </span>
-              )
-            }
-            return (
-              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
-                {selected.map((value) => (
+        <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+          <Select
+            // labelId='demo-multiple-chip-label'
+            // id='demo-multiple-chip'
+            multiple
+            displayEmpty
+            value={optionValue}
+            onChange={handleChange}
+            renderValue={(selected) => {
+              if (selected.length === 0) {
+                return (
                   <span
-                  //   style={{ border: '1px solid red' }}
+                    style={{ color: 'grey', fontWeight: 400, fontSize: '12px' }}
                   >
-                    <Chip
-                      key={value}
-                      label={value}
-                      // onDelete={(e) => handleDelete(e, value)}
-                      onDelete={() => {}}
-                      size='small'
-                      style={{ borderRadius: '4px' }}
-                    />
-                    {/* <button
-                      style={btnStyle}
-                      onClick={() => handleDelete(value)}
-                      onMouseOver={handleMouseOver}
-                      onMouseLeave={handleMouseOut}
-                    >
-                      x
-                    </button> */}
+                    {label}
                   </span>
-                ))}
-              </Box>
-            )
-          }}
-          inputProps={{ 'aria-label': 'Without label' }}
-          style={style}
-          MenuProps={MenuProps}
-        >
-          {dropDownList.map((name) => (
-            <MenuItem
-              key={name}
-              value={name}
-              style={getStyles(name, optionValue, theme)}
+                )
+              }
+              return (
+                <div style={{ display: 'flex' }}>
+                  <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                    {selected.map((value) => (
+                      <span>
+                        <Chip
+                          key={value}
+                          label={value}
+                          onDelete={() => {}}
+                          size='small'
+                          style={{ borderRadius: '4px' }}
+                        />
+                      </span>
+                    ))}
+                  </Box>
+                </div>
+              )
+            }}
+            inputProps={{ 'aria-label': 'Without label' }}
+            style={style}
+            MenuProps={MenuProps}
+          >
+            {dropDownList.map((name) => (
+              <MenuItem
+                key={name}
+                value={name}
+                style={getStyles(name, optionValue, theme)}
+              >
+                {name}
+              </MenuItem>
+            ))}
+          </Select>
+          {optionValue.length > 0 && (
+            <button
+              style={{
+                border: '1px solid lightgrey',
+                borderRadius: '4px',
+                background: 'transparent',
+                fontSize: '16px',
+                padding: '10px'
+              }}
+              onClick={handleClearAll}
             >
-              {name}
-            </MenuItem>
-          ))}
-        </Select>
+              x
+            </button>
+          )}
+        </div>
       </FormControl>
     </div>
   )

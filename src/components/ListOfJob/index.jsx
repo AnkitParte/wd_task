@@ -3,18 +3,8 @@ import JobCard from '../JobCard'
 import userJobListApi from './userJobListApi'
 import { useSelector } from 'react-redux'
 import { Box, LinearProgress } from '@mui/material'
+import listStyle from './listofjob.module.css'
 
-let flexDivStyle = {
-  display: 'flex',
-  flexWrap: 'wrap',
-  gap: '20px',
-  textAlign: 'left',
-  padding: '0 5rem',
-  // border: '1px solid green',
-  width: '80%',
-  margin: 'auto',
-  justifyContent: 'space-around'
-}
 const ListOfJob = ({ setTotalJobCount }) => {
   const [page, setPage] = useState(0)
   const redux = useSelector((store) => store)
@@ -55,8 +45,7 @@ const ListOfJob = ({ setTotalJobCount }) => {
   }, [])
   return (
     <div style={{ marginTop: '20px' }}>
-      {/* <div style={{ textAlign: 'center' }}>Job List</div> */}
-      <div style={flexDivStyle}>
+      <div className={listStyle?.listDiv}>
         {jobApiData?.jdList?.map((it, idx) => {
           return <JobCard key={idx} data={it} />
         })}
