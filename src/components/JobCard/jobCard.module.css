@@ -4,6 +4,7 @@
   padding: 10px 1rem;
   border-radius: 6px;
   transition: all 0.1s ease-out;
+  border-radius: 20px !important;
 }
 .jobCard:hover {
   transform: scale(1.03);
@@ -12,6 +13,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 1rem;
 }
 .nameLogoDiv div div:first-child {
   font-size: 13px;
@@ -26,6 +28,9 @@
   line-height: 1.5;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.87);
+}
+.nameLogoDiv div div:nth-child(2) {
+  margin-top: -6px;
 }
 .nameLogoDiv div div:nth-child(2)::first-letter {
   text-transform: capitalize;
@@ -59,14 +64,24 @@
   width: 250px;
   max-height: 120px;
   overflow: hidden;
-  text-overflow: 'ellipsis';
-  line-height: '1.2rem';
+  text-overflow: ellipsis;
+  line-height: 1.1rem;
   -webkit-line-clamp: 6;
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  /* color: green; */
   font-size: 14px;
   font-weight: 400;
+  /* -webkit-tap-highlight-color: red;
+  tap-highlight-color: red; */
+}
+.showMoreDiv {
+  cursor: pointer;
+  color: rgb(73, 67, 218);
+  text-decoration: none;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  text-align: center;
+  margin-top: 12px;
 }
 .minExpDiv {
   margin-top: 10px;
@@ -96,4 +111,8 @@
   margin: 5px 0;
   font-size: 16px;
   font-weight: 500;
+}
+
+.roleName::first-letter {
+  text-transform: capitalize;
 }

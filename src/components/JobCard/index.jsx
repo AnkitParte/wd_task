@@ -1,5 +1,7 @@
 import { Chip, Button } from '@mui/material'
 import jobCardStyles from './jobCard.module.css'
+import { useState } from 'react'
+import JobInfoModal from './JobInfoModal'
 
 // let descStyle = {
 //   width: '250px',
@@ -12,6 +14,11 @@ import jobCardStyles from './jobCard.module.css'
 //   WebkitBoxOrient: 'vertical'
 // }
 const JobCard = ({ data }) => {
+  const [jdModal, setJdModal] = useState(false)
+  const [jdModalData, setJdModalData] = useState({})
+  const handleJdModal = () => {
+    setJdModal((p) => !p)
+  }
   return (
     <div className={jobCardStyles.jobCard}>
       <div>
@@ -46,6 +53,15 @@ const JobCard = ({ data }) => {
       >
         {data?.jobDetailsFromCompany}
       </div>
+      <div
+        className={jobCardStyles.showMoreDiv}
+        onClick={() => {
+          setJdModalData(data)
+          handleJdModal()
+        }}
+      >
+        Show More
+      </div>
       <div className={jobCardStyles.minExpDiv}>Minimum Experience</div>
       <div className={jobCardStyles.minExpVal}>
         {data?.minExp ? `${data?.minExp} years` : 'U/A'}
@@ -60,6 +76,13 @@ const JobCard = ({ data }) => {
           ⚡️ Easy Apply
         </button>
       </div>
+      {jdModal && (
+        <JobInfoModal
+          isOpen={jdModal}
+          onClose={handleJdModal}
+          data={jdModalData}
+        />
+      )}
     </div>
   )
 }
