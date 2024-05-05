@@ -1,10 +1,11 @@
 import axios from 'axios'
 
-export const getJobListApi = async () => {
+let l = 10
+export const getJobListApi = async (pageNum) => {
   try {
     let data = JSON.stringify({
-      limit: 10,
-      offset: 0
+      limit: l,
+      offset: l * pageNum
     })
 
     let config = {

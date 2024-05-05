@@ -26,11 +26,6 @@ const JobFilters = () => {
         style={{ minWidth: '170px' }}
       />
       <MultipleSelectBox
-        dropDownList={numOfEmp}
-        label={'No of Employees'}
-        style={{ minWidth: '170px' }}
-      />
-      <MultipleSelectBox
         dropDownList={yearOfExp}
         label={'Experience'}
         style={{ minWidth: '70px' }}
@@ -43,6 +38,11 @@ const JobFilters = () => {
       <MultipleSelectBox
         dropDownList={minBase}
         label={'Min Base Salary'}
+        style={{ minWidth: '170px' }}
+      />
+      <MultipleSelectBox
+        dropDownList={numOfEmp}
+        label={'Company Name'}
         style={{ minWidth: '170px' }}
       />
     </div>

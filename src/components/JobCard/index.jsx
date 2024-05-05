@@ -7,9 +7,9 @@ let cardStyle = {
   padding: '2rem',
   borderRadius: '6px'
 }
-const JobCard = ({ data }) => {
+const JobCard = ({ data, ref }) => {
   return (
-    <div style={cardStyle}>
+    <div style={cardStyle} ref={ref}>
       <div>
         <Chip size='small' variant='outlined' label={`Posted 3 days ago`} />
       </div>
