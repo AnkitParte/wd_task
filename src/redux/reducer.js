@@ -1,11 +1,11 @@
 import { COMP_NAME, EXPR, LOCATION, ROLE, SALARY } from './actions'
 
 const initialState = {
-  role: '',
-  expr: '',
-  location: '',
-  salary: '',
-  company: ''
+  role: [],
+  expr: [],
+  location: [],
+  salary: [],
+  company: []
 }
 
 const rootReducer = (state = initialState, action) => {

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useTheme } from '@mui/material/styles'
-import { MenuItem, FormControl, Select, Chip, Button, Box } from '@mui/material'
+import { MenuItem, FormControl, Select, Chip, Box } from '@mui/material'
+import { useDispatch } from 'react-redux'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -8,24 +9,10 @@ const MenuProps = {
   PaperProps: {
     style: {
       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-      // height: 1000,
       width: 250
     }
   }
 }
-
-const names = [
-  'Oliver Hansen',
-  'Van Henry',
-  'April Tucker',
-  'Ralph Hubbard',
-  'Omar Alexander',
-  'Carlos Abbott',
-  'Miriam Wagner',
-  'Bradley Wilkerson',
-  'Virginia Andrews',
-  'Kelly Snyder'
-]
 
 function getStyles(name, option, theme) {
   return {
@@ -36,9 +23,32 @@ function getStyles(name, option, theme) {
   }
 }
 
-export default function MultipleSelectBox({ dropDownList, label, style }) {
+export default function MultipleSelectBox({
+  dropDownList,
+  label,
+  style,
+  reduxAction
+}) {
   const theme = useTheme()
   const [optionValue, setOptionValue] = useState([])
+  const dispatch = useDispatch()
+  // const [isHovered, setIsHovered] = useState(false)
+
+  // const handleMouseOver = () => {
+  //   setIsHovered(true)
+  // }
+
+  // const handleMouseOut = () => {
+  //   setIsHovered(false)
+  // }
+  // const btnStyle = {
+  //   backgroundColor: isHovered ? 'coral' : '',
+  //   color: isHovered ? 'white' : 'black',
+  //   padding: '10px',
+  //   border: 'none',
+  //   padding: '4px 6px',
+  //   borderRadius: '4px'
+  // }
 
   const handleChange = (event) => {
     const {
@@ -46,16 +56,20 @@ export default function MultipleSelectBox({ dropDownList, label, style }) {
     } = event
     console.log('value->', value)
     setOptionValue(value)
+    dispatch({ type: reduxAction, payload: value })
   }
+  // const handleDelete = (e, value) => {
+  //   e.preventDefault()
+  //   console.log('event', value)
+  //   let newVal = optionValue?.filter((it) => it != value)
+  //   setOptionValue(newVal)
+  //   dispatch({ type: reduxAction, payload: newVal })
+  // }
 
   // console.log('optionValue->', optionValue)
   return (
     <div>
-      <FormControl
-        // sx={{ m: 1, width: 300, border: '1px solid blue' }}
-        size='small'
-      >
-        {/* {optionValue.length != 0 && ( */}
+      <FormControl size='small'>
         <div style={{ fontWeight: 'bold', fontSize: '12px' }}>
           {optionValue.length != 0 ? (
             label
@@ -63,9 +77,7 @@ export default function MultipleSelectBox({ dropDownList, label, style }) {
             <span style={{ color: 'white' }}>Text</span>
           )}
         </div>
-        {/* )} */}
         <Select
-          //   style={{ marginTop: '10px' }}
           labelId='demo-multiple-chip-label'
           id='demo-multiple-chip'
           multiple
@@ -91,19 +103,16 @@ export default function MultipleSelectBox({ dropDownList, label, style }) {
                     <Chip
                       key={value}
                       label={value}
-                      onDelete={(e) => {
-                        console.log('e->', e)
-                      }}
+                      // onDelete={(e) => handleDelete(e, value)}
+                      onDelete={() => {}}
                       size='small'
                       style={{ borderRadius: '4px' }}
                     />
                     {/* <button
-                      size='small'
-                      style={{
-                        border: '1px solid green',
-                        padding: '4px',
-                        borderRadius: '4px'
-                      }}
+                      style={btnStyle}
+                      onClick={() => handleDelete(value)}
+                      onMouseOver={handleMouseOver}
+                      onMouseLeave={handleMouseOut}
                     >
                       x
                     </button> */}

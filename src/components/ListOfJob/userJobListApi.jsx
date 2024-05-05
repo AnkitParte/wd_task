@@ -13,8 +13,9 @@ const userJobListApi = (props) => {
     let apiRes = await getJobListApi(pageNum)
     console.table(apiRes?.data?.jdList)
     if (apiRes?.status == 200) {
+      let jdList = apiRes?.data?.jdList
       setJobApiData((prev) => {
-        return { ...prev, jdList: [...prev?.jdList, ...apiRes?.data?.jdList] }
+        return { ...prev, jdList: [...prev?.jdList, ...jdList] }
       })
       if (apiRes?.data?.jdList <= 0) setHasMore(true) //to check if api has any data left
       setHasMore(false)

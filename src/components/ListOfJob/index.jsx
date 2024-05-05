@@ -16,7 +16,7 @@ let flexDivStyle = {
 const ListOfJob = () => {
   const [page, setPage] = useState(0)
   const redux = useSelector((store) => store)
-  console.log('redux->', redux)
+  // console.log('redux->', redux)
 
   const { jobApiData, loading, hasMore } = userJobListApi({ pageNum: page })
 
