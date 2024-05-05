@@ -16,7 +16,7 @@ const JobFilters = () => {
         flexWrap: 'wrap',
         gap: '10px',
         padding: '0 12rem',
-        position: 'sticky',
+        // position: 'sticky',
         top: 0
       }}
     >

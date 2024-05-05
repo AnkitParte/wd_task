@@ -25,12 +25,12 @@ const JobCard = ({ data }) => {
           // whiteSpace: 'nowrap',
           // overflow: 'hidden',
           // textOverflow: 'ellipsis',
-          width: '200px',
-          maxHeight: '100px',
+          width: '250px',
+          maxHeight: '120px',
           overflow: 'hidden',
           textOverflow: 'ellipsis',
           lineHeight: '1.2rem',
-          WebkitLineClamp: 4,
+          WebkitLineClamp: 6,
           display: '-webkit-box',
           WebkitBoxOrient: 'vertical'
         }}
@@ -38,9 +38,15 @@ const JobCard = ({ data }) => {
         {data?.jobDetailsFromCompany}
       </div>
       <div>Minimum Experience</div>
-      <div>{data?.minExp}</div>
+      <div>{data?.minExp || 'U/A'}</div>
       <div>
-        <Button color='primary'>Easy Apply</Button>
+        <Button
+          style={{ color: 'white', background: 'black' }}
+          variant='contained'
+          fullWidth
+        >
+          Easy Apply
+        </Button>
       </div>
     </div>
   )

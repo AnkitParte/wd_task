@@ -1,29 +1,19 @@
-import React, { useEffect, useState } from 'react'
-import { getJobListApi } from './api'
+import React from 'react'
 import JobCard from '../JobCard'
+import userJobListApi from './userJobListApi'
 
 let flexDivStyle = {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '4rem',
+  gap: '30px',
   textAlign: 'left',
-  padding: '0 4rem',
+  padding: '0 5rem',
   // border: '1px solid green',
-  width: '80%',
+  width: '90%',
   margin: 'auto'
 }
 const ListOfJob = () => {
-  const [jobApiData, setJobApiData] = useState({})
-  const apiCall = async () => {
-    let apiRes = await getJobListApi()
-    console.table(apiRes?.data?.jdList)
-    if (apiRes?.status == 200) {
-      setJobApiData(apiRes?.data)
-    }
-  }
-  useEffect(() => {
-    apiCall()
-  }, [])
+  const { jobApiData } = userJobListApi({ pageNum: 0 })
   return (
     <div style={{ marginTop: '20px' }}>
       {/* <div style={{ textAlign: 'center' }}>Job List</div> */}
