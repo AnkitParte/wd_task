@@ -3,7 +3,7 @@ import { getJobListApi } from './api'
 
 const userJobListApi = (props) => {
   const { pageNum } = props
-  console.log('pageNum', pageNum)
+  //   console.log('pageNum', pageNum)
   const [jobApiData, setJobApiData] = useState({ jdList: [], totalCount: 0 })
   const [hasMore, setHasMore] = useState(false)
   const [loading, setLoading] = useState(false)
@@ -16,8 +16,8 @@ const userJobListApi = (props) => {
       setJobApiData((prev) => {
         return { ...prev, jdList: [...prev?.jdList, ...apiRes?.data?.jdList] }
       })
-      if (apiRes?.data?.jdList <= 0) setHasMore(true)
-      setHasMore(true)
+      if (apiRes?.data?.jdList <= 0) setHasMore(true) //to check if api has any data left
+      setHasMore(false)
     }
     setLoading(false)
   }

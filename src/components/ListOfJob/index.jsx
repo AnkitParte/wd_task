@@ -1,6 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import JobCard from '../JobCard'
 import userJobListApi from './userJobListApi'
+import { useSelector } from 'react-redux'
 
 let flexDivStyle = {
   display: 'flex',
@@ -14,6 +15,8 @@ let flexDivStyle = {
 }
 const ListOfJob = () => {
   const [page, setPage] = useState(0)
+  const redux = useSelector((store) => store)
+  console.log('redux->', redux)
 
   const { jobApiData, loading, hasMore } = userJobListApi({ pageNum: page })
 
@@ -23,8 +26,10 @@ const ListOfJob = () => {
         window.innerHeight + window.scrollY >=
         window.document.body.offsetHeight - 20
       ) {
-        setPage((p) => p + 1)
-        console.log('Page Up')
+        if (!hasMore) {
+          setPage((p) => p + 1)
+          // console.log('Page Up')
+        }
       }
     }
 
@@ -32,13 +37,13 @@ const ListOfJob = () => {
     return () => {
       window.removeEventListener('scroll', onScroll)
     }
-  })
+  }, [])
   return (
     <div style={{ marginTop: '20px' }}>
       {/* <div style={{ textAlign: 'center' }}>Job List</div> */}
       <div style={flexDivStyle}>
         {jobApiData?.jdList?.map((it, idx) => {
-          return <JobCard key={it?.jdUid} data={it} />
+          return <JobCard key={idx} data={it} />
         })}
       </div>
     </div>
