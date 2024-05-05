@@ -15,19 +15,41 @@ export const locationOfEmp = ['Remote', 'Hybrid', 'In-office']
 export const minBase = ['5L', '10L', '15L', '20L', '30L', '40L', '50L']
 
 export const filterData = (data, filter) => {
-  console.log('--filter--', filter)
-  console.log('--data--', data)
+  // console.log('--filter--', filter)
+  // console.log('--data--', data)
   let jobData = [...data]
+  let { role, company, salary, location, expr } = filter
 
-  if (filter?.role?.length != 0) {
+  if (role?.length !== 0) {
+    role?.forEach((entry) => {
+      let str = entry.toLowerCase()
+      jobData = jobData.filter((job) => job?.jobRole === str)
+    })
   }
-  if (filter?.expr?.length != 0) {
+  if (expr?.length !== 0) {
+    expr?.forEach((entry) => {
+      jobData = jobData.filter((job) => entry >= job?.minExp)
+    })
   }
-  if (filter?.location?.length != 0) {
+  if (location?.length !== 0) {
+    location?.forEach((entry) => {
+      let str = entry.toLowerCase()
+      jobData = jobData.filter((job) => job?.location === str)
+    })
   }
-  if (filter?.company?.length != 0) {
+  if (company?.length !== 0) {
+    company?.forEach((entry) => {
+      jobData = jobData.filter((job) => job?.location === entry)
+    })
   }
-  if (filter?.salary?.length != 0) {
+  if (salary?.length !== 0) {
+    company?.forEach((entry) => {
+      let num = entry.split('L')
+      jobData = jobData.filter((job) => {
+        let salary = job * 83.38
+        if (+num >= salary) return job
+      })
+    })
   }
 
   return jobData
