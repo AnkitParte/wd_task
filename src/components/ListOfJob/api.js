@@ -18,11 +18,11 @@ export const getJobListApi = async () => {
     }
 
     let res = await axios.request(config)
-    console.log('res->', res)
+    console.log('res->', res?.data)
 
     return {
       status: 200,
-      data: []
+      data: res?.data
     }
   } catch (error) {
     console.log('api error', error)

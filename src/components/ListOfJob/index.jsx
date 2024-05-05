@@ -1,10 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getJobListApi } from './api'
 
 const ListOfJob = () => {
+  const [jobApiData, setJobApiData] = useState({})
   const apiCall = async () => {
     let apiRes = await getJobListApi()
-    console.log('apiRes', apiRes)
+    console.table(apiRes?.data?.jdList)
+    if (apiRes?.status == 200) {
+      setJobApiData(apiRes?.data)
+    }
   }
   useEffect(() => {
     apiCall()
@@ -12,7 +16,11 @@ const ListOfJob = () => {
   return (
     <div>
       <div style={{ textAlign: 'center' }}>Job List</div>
-      <div></div>
+      <div>
+        {jobApiData?.jdList?.map((it) => {
+          return <div>{it?.id}</div>
+        })}
+      </div>
     </div>
   )
 }
