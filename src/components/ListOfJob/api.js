@@ -19,7 +19,7 @@ export const getJobListApi = async (pageNum) => {
     }
 
     let res = await axios.request(config)
-    console.log('res->', res?.data)
+    // console.log('res->', res?.data)
 
     return {
       status: 200,

@@ -1,0 +1,99 @@
+.jobCard {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+  padding: 10px 1rem;
+  border-radius: 6px;
+  transition: all 0.1s ease-out;
+}
+.jobCard:hover {
+  transform: scale(1.03);
+}
+.nameLogoDiv {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.nameLogoDiv div div:first-child {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+  color: #8b8b8b;
+}
+
+.nameLogoDiv div div:nth-child(2) {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.87);
+}
+.nameLogoDiv div div:nth-child(2)::first-letter {
+  text-transform: capitalize;
+}
+
+.nameLogoDiv div div:nth-child(3) {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+}
+.nameLogoDiv div div:nth-child(3)::first-letter {
+  text-transform: capitalize;
+}
+
+.salaryDiv {
+  font-weight: 400;
+  font-size: 14px !important;
+  margin: 8px 0 !important;
+  line-height: 1.43;
+  color: rgb(77, 89, 106);
+}
+
+.aboutDiv {
+  font-size: 1rem;
+  /* line-height: 1.5; */
+  font-weight: 510;
+  color: rgba(0, 0, 0, 0.87);
+}
+.descDiv {
+  color: rgba(0, 0, 0, 0.87);
+  width: 250px;
+  max-height: 120px;
+  overflow: hidden;
+  text-overflow: 'ellipsis';
+  line-height: '1.2rem';
+  -webkit-line-clamp: 6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  /* color: green; */
+  font-size: 14px;
+  font-weight: 400;
+}
+.minExpDiv {
+  margin-top: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+  color: #8b8b8b;
+}
+
+.minExpVal {
+  font-size: 14px;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+.easyApplyBtn {
+  width: 100%;
+  background-color: rgb(85, 239, 196);
+  color: rgb(0, 0, 0);
+  padding: 8px 18px;
+  border: 0px;
+  cursor: pointer;
+  text-transform: none;
+  padding: 8px 20px;
+  border-radius: 8px;
+  margin: 5px 0;
+  font-size: 16px;
+  font-weight: 500;
+}

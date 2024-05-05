@@ -5,11 +5,15 @@ import { getDropdownVal } from '../../tempDb'
 import { COMP_NAME, EXPR, LOCATION, ROLE, SALARY } from '../../redux/actions'
 import SingleSelectBox from './SingleSelectBox'
 
+let parentDiv = {
+  width: '90%',
+  margin: 'auto'
+}
 const JobFilters = () => {
   let { jobRole, jobExp, jobLocation, jobCompany } = getDropdownVal()
   // console.log('FILTERS', jobRole, jobSalary, jobExp, jobLocation, jobCompany)
   return (
-    <div>
+    <div style={parentDiv}>
       <div
         style={{
           display: 'flex',

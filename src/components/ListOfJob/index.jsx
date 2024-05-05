@@ -7,12 +7,13 @@ import { Box, LinearProgress } from '@mui/material'
 let flexDivStyle = {
   display: 'flex',
   flexWrap: 'wrap',
-  gap: '30px',
+  gap: '20px',
   textAlign: 'left',
   padding: '0 5rem',
   // border: '1px solid green',
-  width: '90%',
-  margin: 'auto'
+  width: '80%',
+  margin: 'auto',
+  justifyContent: 'space-around'
 }
 const ListOfJob = ({ setTotalJobCount }) => {
   const [page, setPage] = useState(0)
@@ -25,6 +26,11 @@ const ListOfJob = ({ setTotalJobCount }) => {
     setTotalJobCount
   })
 
+  useEffect(() => {
+    if (jobApiData?.jdList?.length == 0 && page != 0) {
+      setPage(0)
+    }
+  }, [redux])
   useEffect(() => {
     let onScroll = () => {
       if (!loading) {

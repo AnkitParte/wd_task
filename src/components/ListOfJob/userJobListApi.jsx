@@ -42,10 +42,10 @@ const userJobListApi = (props) => {
   }
   useEffect(() => {
     apiCall()
-  }, [pageNum])
-  useEffect(() => {
-    onFilterChange()
-  }, [redux])
+  }, [pageNum, redux])
+  // useEffect(() => {
+  //   onFilterChange()
+  // }, [redux])
   return { jobApiData, loading, hasMore }
 }
 

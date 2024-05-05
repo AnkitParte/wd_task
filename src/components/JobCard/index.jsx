@@ -1,52 +1,64 @@
 import { Chip, Button } from '@mui/material'
-import React from 'react'
+import jobCardStyles from './jobCard.module.css'
 
-let cardStyle = {
-  boxShadow:
-    'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
-  padding: '2rem',
-  borderRadius: '6px'
-}
+// let descStyle = {
+//   width: '250px',
+//   maxHeight: '120px',
+//   overflow: 'hidden',
+//   textOverflow: 'ellipsis',
+//   lineHeight: '1.2rem',
+//   WebkitLineClamp: 6,
+//   display: '-webkit-box',
+//   WebkitBoxOrient: 'vertical'
+// }
 const JobCard = ({ data }) => {
   return (
-    <div style={cardStyle}>
+    <div className={jobCardStyles.jobCard}>
       <div>
-        <Chip size='small' variant='outlined' label={`Posted 3 days ago`} />
+        <Chip
+          icon={<>⏳</>}
+          size='small'
+          variant='outlined'
+          label={`Posted 3 days ago`}
+          style={{ padding: '4px', fontSize: '8px' }}
+        />
       </div>
-      <div>{data?.companyName}</div>
-      <div>{data?.jobRole}</div>
-      <div>{data?.location}</div>
-      <div>
-        Estimated Salary: {data?.minJdSalary ? `₹ ${data?.minJdSalary}` : 'U/A'}
+      <div className={jobCardStyles.nameLogoDiv}>
+        <div>
+          <img src={data?.logoUrl} style={{ height: '30px', width: '30px' }} />
+        </div>
+        <div>
+          <div>{data?.companyName}</div>
+          <div>{data?.jobRole}</div>
+          <div>{data?.location}</div>
+        </div>
       </div>
-      <div>About Company:</div>
+      <div className={jobCardStyles.salaryDiv}>
+        Estimated Salary:{' '}
+        {data?.minJdSalary
+          ? `₹ ${Math.floor((data?.minJdSalary * 83.38 * 1000) / 100000)}L`
+          : 'U/A'}
+      </div>
+      <div className={jobCardStyles.aboutDiv}>About Company:</div>
       <div
-        style={{
-          // whiteSpace: 'nowrap',
-          // overflow: 'hidden',
-          // textOverflow: 'ellipsis',
-          width: '250px',
-          maxHeight: '120px',
-          overflow: 'hidden',
-          textOverflow: 'ellipsis',
-          lineHeight: '1.2rem',
-          WebkitLineClamp: 6,
-          display: '-webkit-box',
-          WebkitBoxOrient: 'vertical'
-        }}
+        // style={descStyle}
+        className={jobCardStyles.descDiv}
       >
         {data?.jobDetailsFromCompany}
       </div>
-      <div>Minimum Experience</div>
-      <div>{data?.minExp || 'U/A'}</div>
+      <div className={jobCardStyles.minExpDiv}>Minimum Experience</div>
+      <div className={jobCardStyles.minExpVal}>
+        {data?.minExp ? `${data?.minExp} years` : 'U/A'}
+      </div>
       <div>
-        <Button
-          style={{ color: 'white', background: 'black' }}
+        <button
+          // style={{ color: 'white', background: 'black' }}
+          className={jobCardStyles.easyApplyBtn}
           variant='contained'
           fullWidth
         >
-          Easy Apply
-        </Button>
+          ⚡️ Easy Apply
+        </button>
       </div>
     </div>
   )
