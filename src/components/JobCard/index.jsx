@@ -1,7 +1,49 @@
+import { Chip, Button } from '@material-ui/core'
 import React from 'react'
 
-const JobCard = () => {
-  return <div>JobCard</div>
+let cardStyle = {
+  boxShadow:
+    'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px',
+  padding: '2rem',
+  borderRadius: '6px'
+}
+const JobCard = ({ data }) => {
+  return (
+    <div style={cardStyle}>
+      <div>
+        <Chip size='small' variant='outlined' label={`Posted 3 days ago`} />
+      </div>
+      <div>{data?.companyName}</div>
+      <div>{data?.jobRole}</div>
+      <div>{data?.location}</div>
+      <div>
+        Estimated Salary: {data?.minJdSalary ? `₹ ${data?.minJdSalary}` : 'U/A'}
+      </div>
+      <div>About Company:</div>
+      <div
+        style={{
+          // whiteSpace: 'nowrap',
+          // overflow: 'hidden',
+          // textOverflow: 'ellipsis',
+          width: '200px',
+          maxHeight: '100px',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          lineHeight: '1.2rem',
+          WebkitLineClamp: 4,
+          display: '-webkit-box',
+          WebkitBoxOrient: 'vertical'
+        }}
+      >
+        {data?.jobDetailsFromCompany}
+      </div>
+      <div>Minimum Experience</div>
+      <div>{data?.minExp}</div>
+      <div>
+        <Button color='primary'>Easy Apply</Button>
+      </div>
+    </div>
+  )
 }
 
 export default JobCard

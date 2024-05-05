@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import { getJobListApi } from './api'
+import JobCard from '../JobCard'
 
+let flexDivStyle = {
+  display: 'flex',
+  flexWrap: 'wrap',
+  gap: '4rem',
+  textAlign: 'left',
+  padding: '0 4rem',
+  // border: '1px solid green',
+  width: '80%',
+  margin: 'auto'
+}
 const ListOfJob = () => {
   const [jobApiData, setJobApiData] = useState({})
   const apiCall = async () => {
@@ -14,11 +25,12 @@ const ListOfJob = () => {
     apiCall()
   }, [])
   return (
-    <div>
-      <div style={{ textAlign: 'center' }}>Job List</div>
-      <div>
+    <div style={{ marginTop: '20px' }}>
+      {/* <div style={{ textAlign: 'center' }}>Job List</div> */}
+      <div style={flexDivStyle}>
         {jobApiData?.jdList?.map((it) => {
-          return <div>{it?.id}</div>
+          // return <div>{it?.id}</div>
+          return <JobCard key={it?.jdUid} data={it} />
         })}
       </div>
     </div>
