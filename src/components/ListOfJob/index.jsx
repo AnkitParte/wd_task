@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import JobCard from '../JobCard'
 import userJobListApi from './userJobListApi'
 import { useSelector } from 'react-redux'
+import { Box, LinearProgress } from '@mui/material'
 
 let flexDivStyle = {
   display: 'flex',
@@ -13,12 +14,16 @@ let flexDivStyle = {
   width: '90%',
   margin: 'auto'
 }
-const ListOfJob = () => {
+const ListOfJob = ({ setTotalJobCount }) => {
   const [page, setPage] = useState(0)
   const redux = useSelector((store) => store)
   // console.log('redux->', redux)
 
-  const { jobApiData, loading, hasMore } = userJobListApi({ pageNum: page })
+  const { jobApiData, loading, hasMore } = userJobListApi({
+    pageNum: page,
+    redux,
+    setTotalJobCount
+  })
 
   useEffect(() => {
     let onScroll = () => {
@@ -46,6 +51,11 @@ const ListOfJob = () => {
           return <JobCard key={idx} data={it} />
         })}
       </div>
+      {loading && (
+        <Box sx={{ width: '90%', margin: 'auto', marginTop: '5rem' }}>
+          <LinearProgress />
+        </Box>
+      )}
     </div>
   )
 }
