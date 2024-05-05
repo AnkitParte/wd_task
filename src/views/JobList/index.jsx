@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './joblist.module.css'
 import Badge from '@mui/material/Badge'
 import JobFilters from '../../components/JobFilters/JobFilters'
+import ListOfJob from '../../components/ListOfJob'
 
 const JobList = () => {
   return (
@@ -14,6 +15,7 @@ const JobList = () => {
         </Badge>
       </div>
       <JobFilters />
+      <ListOfJob />
     </>
   )
 }

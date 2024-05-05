@@ -7,7 +7,14 @@ import Box from '@mui/material/Box'
 // import FormControl from '@mui/material/FormControl'
 // import Select from '@mui/material/Select'
 // import Chip from '@mui/material/Chip'
-import { MenuItem, FormControl, Select, Chip, Button } from '@mui/material'
+import {
+  MenuItem,
+  FormControl,
+  Select,
+  Chip,
+  Button,
+  styled
+} from '@mui/material'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -42,7 +49,7 @@ function getStyles(name, option, theme) {
   }
 }
 
-export default function MultipleSelectChip({ dropDownList, label }) {
+export default function MultipleSelectBox({ dropDownList, label, style }) {
   const theme = useTheme()
   const [optionValue, setOptionValue] = React.useState([])
 
@@ -58,7 +65,10 @@ export default function MultipleSelectChip({ dropDownList, label }) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, width: 300 }} size='small'>
+      <FormControl
+        // sx={{ m: 1, width: 300, border: '1px solid blue' }}
+        size='small'
+      >
         {/* {optionValue.length != 0 && ( */}
         <div style={{ fontWeight: 'bold', fontSize: '12px' }}>
           {optionValue.length != 0 ? (
@@ -117,6 +127,7 @@ export default function MultipleSelectChip({ dropDownList, label }) {
             )
           }}
           inputProps={{ 'aria-label': 'Without label' }}
+          style={style}
         >
           {dropDownList.map((name) => (
             <MenuItem

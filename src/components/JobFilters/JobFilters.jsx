@@ -1,5 +1,5 @@
 import React from 'react'
-import MultipleSelectChip from './temp'
+import MultipleSelectBox from './MultiSelectBox'
 import {
   numOfEmp,
   roleList,
@@ -13,15 +13,38 @@ const JobFilters = () => {
     <div
       style={{
         display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        flexWrap: 'wrap',
+        gap: '10px',
+        padding: '0 12rem',
+        position: 'sticky',
+        top: 0
       }}
     >
-      <MultipleSelectChip dropDownList={roleList} label={'Roles'} />
-      <MultipleSelectChip dropDownList={numOfEmp} label={'No of Employees'} />
-      <MultipleSelectChip dropDownList={yearOfExp} label={'Experience'} />
-      <MultipleSelectChip dropDownList={locationOfEmp} label={'Location'} />
-      <MultipleSelectChip dropDownList={minBase} label={'Min Base Pay'} />
+      <MultipleSelectBox
+        dropDownList={roleList}
+        label={'Roles'}
+        style={{ minWidth: '170px' }}
+      />
+      <MultipleSelectBox
+        dropDownList={numOfEmp}
+        label={'No of Employees'}
+        style={{ minWidth: '170px' }}
+      />
+      <MultipleSelectBox
+        dropDownList={yearOfExp}
+        label={'Experience'}
+        style={{ minWidth: '70px' }}
+      />
+      <MultipleSelectBox
+        dropDownList={locationOfEmp}
+        label={'Location'}
+        style={{ minWidth: '170px' }}
+      />
+      <MultipleSelectBox
+        dropDownList={minBase}
+        label={'Min Base Salary'}
+        style={{ minWidth: '170px' }}
+      />
     </div>
   )
 }
