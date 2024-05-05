@@ -1,4 +1,4 @@
-import { Chip, Button } from '@material-ui/core'
+import { Chip, Button } from '@mui/material'
 import React from 'react'
 
 let cardStyle = {

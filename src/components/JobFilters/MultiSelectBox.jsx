@@ -1,31 +1,18 @@
-import * as React from 'react'
+import React, { useState } from 'react'
 import { useTheme } from '@mui/material/styles'
-import Box from '@mui/material/Box'
-// import OutlinedInput from '@mui/material/OutlinedInput'
-// import InputLabel from '@mui/material/InputLabel'
-// import MenuItem from '@mui/material/MenuItem'
-// import FormControl from '@mui/material/FormControl'
-// import Select from '@mui/material/Select'
-// import Chip from '@mui/material/Chip'
-import {
-  MenuItem,
-  FormControl,
-  Select,
-  Chip,
-  Button,
-  styled
-} from '@mui/material'
+import { MenuItem, FormControl, Select, Chip, Button, Box } from '@mui/material'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
-// const MenuProps = {
-//   PaperProps: {
-//     style: {
-//       maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
-//       width: 250
-//     }
-//   }
-// }
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      // height: 1000,
+      width: 250
+    }
+  }
+}
 
 const names = [
   'Oliver Hansen',
@@ -51,18 +38,17 @@ function getStyles(name, option, theme) {
 
 export default function MultipleSelectBox({ dropDownList, label, style }) {
   const theme = useTheme()
-  const [optionValue, setOptionValue] = React.useState([])
+  const [optionValue, setOptionValue] = useState([])
 
   const handleChange = (event) => {
     const {
       target: { value }
     } = event
-    setOptionValue(
-      // On autofill we get a stringified value.
-      typeof value === 'string' ? value.split(',') : value
-    )
+    console.log('value->', value)
+    setOptionValue(value)
   }
 
+  // console.log('optionValue->', optionValue)
   return (
     <div>
       <FormControl
@@ -80,8 +66,8 @@ export default function MultipleSelectBox({ dropDownList, label, style }) {
         {/* )} */}
         <Select
           //   style={{ marginTop: '10px' }}
-          //   labelId='demo-multiple-chip-label'
-          //   id='demo-multiple-chip'
+          labelId='demo-multiple-chip-label'
+          id='demo-multiple-chip'
           multiple
           displayEmpty
           value={optionValue}
@@ -128,6 +114,7 @@ export default function MultipleSelectBox({ dropDownList, label, style }) {
           }}
           inputProps={{ 'aria-label': 'Without label' }}
           style={style}
+          MenuProps={MenuProps}
         >
           {dropDownList.map((name) => (
             <MenuItem
