@@ -24,6 +24,7 @@ function getStyles(name, option, theme) {
   }
 }
 
+// Component for handling multiselect from dropdown
 export default function MultipleSelectBox({
   dropDownList,
   label,

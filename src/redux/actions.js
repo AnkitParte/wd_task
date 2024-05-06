@@ -1,3 +1,5 @@
+// all redux actions
+
 export const ROLE = '/role-change'
 export const EXPR = '/experience-change'
 export const LOCATION = '/location-change'

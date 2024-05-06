@@ -32,11 +32,7 @@ const JobCard = ({ data }) => {
         </div>
       </div>
       <div className={jobCardStyles.salaryDiv}>
-        Estimated Salary:{' '}
-        {/* {data?.minJdSalary && data?.maxJdSalary
-          ? `₹ ${Math.floor((data?.minJdSalary * 83.38 * 1000) / 100000)}L`
-          : 'U/A'} */}
-        {formatSalary(data?.minJdSalary, data?.maxJdSalary)}
+        Estimated Salary: {formatSalary(data?.minJdSalary, data?.maxJdSalary)}
       </div>
       <div className={jobCardStyles.aboutDiv}>About Company:</div>
       <div className={jobCardStyles.descDiv}>{data?.jobDetailsFromCompany}</div>

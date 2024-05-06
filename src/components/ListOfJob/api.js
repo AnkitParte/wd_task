@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+//API function
 let l = 10
 export const getJobListApi = async (pageNum) => {
   try {

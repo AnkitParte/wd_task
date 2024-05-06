@@ -14,6 +14,7 @@ const style = {
   borderRadius: '6px'
 }
 
+// Modal to handle show more data functionality
 export default function JobInfoModal({ isOpen, onClose, data }) {
   return (
     <div>

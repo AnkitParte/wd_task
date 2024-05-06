@@ -3,6 +3,7 @@ import { MenuItem, FormControl, Select } from '@mui/material'
 import { useDispatch } from 'react-redux'
 import { RxCross2 } from 'react-icons/rx'
 
+// Component for handling singe selected dropdown
 const SingleSelectBox = ({ dropDownList, label, style, reduxAction }) => {
   const [optionVal, setOptionVal] = useState('')
   const dispatch = useDispatch()

@@ -1,3 +1,4 @@
+// function to handle min and max salary of job opening
 export function formatSalary(minSalary, maxSalary) {
   if (minSalary !== null && maxSalary !== null) {
     let min = Math.floor((minSalary * 83.38 * 1000) / 100000)
@@ -15,6 +16,7 @@ export function formatSalary(minSalary, maxSalary) {
   }
 }
 
+// function to handle the job post according to salary filter value alteration
 export function checkSalaryValue(minSalary, maxSalary, value) {
   if (minSalary !== null && maxSalary !== null) {
     let min = Math.floor((minSalary * 83.38 * 1000) / 100000)

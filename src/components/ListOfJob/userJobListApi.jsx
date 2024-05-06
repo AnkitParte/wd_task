@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { getJobListApi } from './api'
 import { filterData } from '../JobFilters/helpers'
 
+//hooks to handle api call logic and pagination based on infinite scroll
 const userJobListApi = (props) => {
   const { pageNum, redux, setTotalJobCount } = props
   //   console.log('pageNum', pageNum)
@@ -9,6 +10,7 @@ const userJobListApi = (props) => {
   const [hasMore, setHasMore] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  // API call handler
   const apiCall = async () => {
     setLoading(true)
     let apiRes = await getJobListApi(pageNum)
@@ -29,6 +31,8 @@ const userJobListApi = (props) => {
     }
     setLoading(false)
   }
+
+  // on filter change handling available data
   const onFilterChange = () => {
     let dataAfterFilter = filterData([...jobApiData.jdList], redux)
     setJobApiData((prev) => {
@@ -42,9 +46,13 @@ const userJobListApi = (props) => {
     setHasMore(false)
     setTotalJobCount(dataAfterFilter?.length)
   }
+
+  // will when page number change
   useEffect(() => {
     apiCall()
   }, [pageNum])
+
+  // will run when a filter change
   useEffect(() => {
     onFilterChange()
   }, [redux])

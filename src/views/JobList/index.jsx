@@ -8,16 +8,7 @@ const JobList = () => {
   const [totalJobCount, setTotalJobCount] = useState(0)
   return (
     <>
-      <div
-        style={{
-          textAlign: 'center',
-          marginBottom: '20px',
-          fontWeight: 600,
-          fontSize: '20px'
-        }}
-      >
-        Weekday Assignment
-      </div>
+      <div className={styles?.mainHeading}>Weekday Assignment</div>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
         <Badge badgeContent={totalJobCount || '0'} color='primary'>
           <span style={{ padding: '5px' }} className={styles?.headerDiv}>
@@ -25,7 +16,9 @@ const JobList = () => {
           </span>
         </Badge>
       </div>
+      {/* Job Filters component */}
       <JobFilters />
+      {/* List of Jobs component */}
       <ListOfJob setTotalJobCount={setTotalJobCount} />
     </>
   )

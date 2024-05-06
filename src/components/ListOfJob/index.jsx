@@ -10,12 +10,14 @@ const ListOfJob = ({ setTotalJobCount }) => {
   const redux = useSelector((store) => store)
   // console.log('redux->', redux)
 
+  // custom hook to manage api call
   const { jobApiData, loading, hasMore } = userJobListApi({
     pageNum: page,
     redux,
     setTotalJobCount
   })
 
+  // on scrolling make api call to fetch data from DB
   useEffect(() => {
     let onScroll = () => {
       if (!loading) {

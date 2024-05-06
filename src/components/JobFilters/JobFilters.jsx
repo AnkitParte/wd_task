@@ -20,9 +20,6 @@ const JobFilters = () => {
           flexWrap: 'wrap',
           gap: '10px',
           padding: '0 12rem'
-          // position: 'absolute',
-          // zIndex: 100
-          // top: 0
         }}
       >
         <MultipleSelectBox

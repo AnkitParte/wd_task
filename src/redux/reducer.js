@@ -7,7 +7,8 @@ const initialState = {
   salary: '',
   company: []
 }
-
+//redux reducer
+//All filter has been handled in redux as they will going to require on multiple parts of logic
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case ROLE:
