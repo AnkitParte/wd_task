@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { useTheme } from '@mui/material/styles'
 import { MenuItem, FormControl, Select, Chip, Box, Button } from '@mui/material'
 import { useDispatch } from 'react-redux'
+import { RxCross2 } from 'react-icons/rx'
 
 const ITEM_HEIGHT = 48
 const ITEM_PADDING_TOP = 8
@@ -37,7 +38,7 @@ export default function MultipleSelectBox({
     const {
       target: { value }
     } = event
-    console.log('value->', value)
+    // console.log('value->', value)
     setOptionValue(value)
     dispatch({ type: reduxAction, payload: value })
   }
@@ -117,7 +118,7 @@ export default function MultipleSelectBox({
               }}
               onClick={handleClearAll}
             >
-              x
+              <RxCross2 style={{ marginTop: '4px' }} />
             </button>
           )}
         </div>

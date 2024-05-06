@@ -1,18 +1,18 @@
-export const roleList = [
-  'Frontend',
-  'Backend',
-  'Dev-ops',
-  'HR',
-  'Senior Developer'
+import { checkSalaryValue } from '../JobCard/helpers'
+
+export const minBase = [
+  '5L',
+  '10L',
+  '15L',
+  '20L',
+  '30L',
+  '40L',
+  '50L',
+  '60L',
+  '70L',
+  '80L',
+  '90L'
 ]
-
-export const compName = ['1-10', '11-20', '21-50', '51-100', 'Senior Developer']
-
-export const yearOfExp = [1, 2, 3, 4, 5]
-
-export const locationOfEmp = ['Remote', 'Hybrid', 'In-office']
-
-export const minBase = ['5L', '10L', '15L', '20L', '30L', '40L', '50L']
 
 export const filterData = (data, filter) => {
   // console.log('--filter--', filter)
@@ -54,10 +54,8 @@ export const filterData = (data, filter) => {
     //considering filter salary in lacs
     jobData = jobData.filter((job) => {
       //considering job salary in thousands of dollars
-      if (!job?.maxJdSalary) return null
-      let jobSalary = Math.floor((job?.maxJdSalary * 83.38 * 1000) / 100000)
-      console.log('salary->', job?.companyName, jobSalary, inLacs)
-      if (job?.maxJdSalary && jobSalary >= inLacs) return job
+      let check = checkSalaryValue(job?.minJdSalary, job?.maxJdSalary, inLacs)
+      if (check) return job
     })
   }
 
