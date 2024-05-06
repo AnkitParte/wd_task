@@ -23,31 +23,41 @@ export const filterData = (data, filter) => {
   if (role?.length !== 0) {
     role?.forEach((entry) => {
       let str = entry.toLowerCase()
-      jobData = jobData.filter((job) => job?.jobRole === str)
+      jobData = jobData.filter((job) => {
+        if (job.jobRole && job.jobRole === str) return job
+      })
     })
   }
   if (expr) {
-    jobData = jobData.filter((job) => +expr >= job?.minExp)
+    jobData = jobData.filter((job) => {
+      if (job.minExp && +expr >= job?.minExp) return job
+    })
   }
   if (location?.length !== 0) {
     location?.forEach((entry) => {
       let str = entry.toLowerCase()
-      jobData = jobData.filter((job) => job?.location === str)
+      jobData = jobData.filter((job) => {
+        if (job?.location && job?.location === str) return job
+      })
     })
   }
   if (company?.length !== 0) {
     company?.forEach((entry) => {
-      jobData = jobData.filter((job) => job?.companyName === entry)
+      jobData = jobData.filter((job) => {
+        if (job?.companyName && job?.companyName === entry) return job
+      })
     })
   }
   if (salary) {
     let num = salary.split('L')
-    let inLacs = +num?.[0] * 100000
-    console.log('inLacs', inLacs)
+    let inLacs = +num?.[0]
+    //considering filter salary in lacs
     jobData = jobData.filter((job) => {
-      let salary = job?.maxJdSalary * 83.38 * 1000
-      console.log('salary', salary)
-      if (salary >= inLacs) return job
+      //considering job salary in thousands of dollars
+      if (!job?.maxJdSalary) return null
+      let jobSalary = Math.floor((job?.maxJdSalary * 83.38 * 1000) / 100000)
+      console.log('salary->', job?.companyName, jobSalary, inLacs)
+      if (job?.maxJdSalary && jobSalary >= inLacs) return job
     })
   }
 

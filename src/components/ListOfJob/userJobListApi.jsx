@@ -38,14 +38,16 @@ const userJobListApi = (props) => {
         totalCount: dataAfterFilter?.length
       }
     })
+    if (dataAfterFilter?.length == 0) setHasMore(true) //to check if api has any data left
+    setHasMore(false)
     setTotalJobCount(dataAfterFilter?.length)
   }
   useEffect(() => {
     apiCall()
-  }, [pageNum, redux])
-  // useEffect(() => {
-  //   onFilterChange()
-  // }, [redux])
+  }, [pageNum])
+  useEffect(() => {
+    onFilterChange()
+  }, [redux])
   return { jobApiData, loading, hasMore }
 }
 

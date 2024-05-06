@@ -19,7 +19,7 @@ const JobList = () => {
         Weekday Assignment
       </div>
       <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-        <Badge badgeContent={totalJobCount} color='primary'>
+        <Badge badgeContent={totalJobCount || '0'} color='primary'>
           <span style={{ padding: '5px' }} className={styles?.headerDiv}>
             Search Jobs
           </span>

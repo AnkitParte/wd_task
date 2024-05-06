@@ -2,6 +2,7 @@ import { Chip, Button } from '@mui/material'
 import jobCardStyles from './jobCard.module.css'
 import { useState } from 'react'
 import JobInfoModal from './JobInfoModal'
+import { formatSalary } from './helpers'
 
 const JobCard = ({ data }) => {
   const [jdModal, setJdModal] = useState(false)
@@ -32,9 +33,10 @@ const JobCard = ({ data }) => {
       </div>
       <div className={jobCardStyles.salaryDiv}>
         Estimated Salary:{' '}
-        {data?.minJdSalary
+        {/* {data?.minJdSalary && data?.maxJdSalary
           ? `₹ ${Math.floor((data?.minJdSalary * 83.38 * 1000) / 100000)}L`
-          : 'U/A'}
+          : 'U/A'} */}
+        {formatSalary(data?.minJdSalary, data?.maxJdSalary)}
       </div>
       <div className={jobCardStyles.aboutDiv}>About Company:</div>
       <div className={jobCardStyles.descDiv}>{data?.jobDetailsFromCompany}</div>

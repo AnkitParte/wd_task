@@ -17,11 +17,6 @@ const ListOfJob = ({ setTotalJobCount }) => {
   })
 
   useEffect(() => {
-    if (jobApiData?.jdList?.length == 0 && page != 0) {
-      setPage(0)
-    }
-  }, [redux])
-  useEffect(() => {
     let onScroll = () => {
       if (!loading) {
         if (
@@ -30,9 +25,6 @@ const ListOfJob = ({ setTotalJobCount }) => {
         ) {
           if (!hasMore) {
             setPage((p) => p + 1)
-            // console.log('Page Up')
-          } else if (jobApiData?.jdList == 0) {
-            setPage(0)
           }
         }
       }
