@@ -13,7 +13,7 @@
 <li>Custom hooks</li>
 <li>Infinite scroll</li>
 <li>Multi select</li>
-<li>Redux to manage global state management</li>
+<li>Redux to handle global state management</li>
 
 ### This is the landing page of assingment
 <img width="1470" alt="Screenshot 2024-05-06 at 8 31 26 AM" src="https://github.com/AnkitParte/wd_task/assets/95030824/55fa7112-40b5-4086-8579-0578dcb6027b">
