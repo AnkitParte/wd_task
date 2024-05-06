@@ -12,3 +12,7 @@
 
 ### On filter change here is the UI
 <img width="1470" alt="Screenshot 2024-05-06 at 8 32 39 AM" src="https://github.com/AnkitParte/wd_task/assets/95030824/3ac0ce85-4cec-48c0-9f3c-06cb127f8d47">
+
+### Modal view when user click on show more button 
+<img width="1470" alt="Screenshot 2024-05-06 at 8 34 11 AM" src="https://github.com/AnkitParte/wd_task/assets/95030824/cd29b71b-7bd7-4d81-b0db-c3fe62aff94e">
+
